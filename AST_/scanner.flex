@@ -23,6 +23,10 @@ int yyline = 1;
 "/" { return DIV; }
 "*" { return MUL; }
 "%" { return REMA; }
+"AND" { return AND; }
+"OR" { return OR; }
+"NOT" { return NOT; }
+"EQUALS" { return EQUALS; }
 "TRUE" {
 	yylval.intValue = 1;
 	return BOOL; 
@@ -31,18 +35,7 @@ int yyline = 1;
 	yylval.intValue = 0;
 	return BOOL; 
 }
-"AND"{
-	return AND;
-}
-"OR"{
-	return OR;
-}
-"NOT"{
-	return NOT;
-}
-"EQUALS"{
-	return EQUALS;
-}
+
 .  { yyerror("unexpected character");
 }
 %%
