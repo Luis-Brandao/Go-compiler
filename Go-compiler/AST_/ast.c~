@@ -1,0 +1,42 @@
+// AST constructor functions
+
+#include <stdlib.h> // for malloc
+#include "ast.h" // AST header
+
+ExprList* ast_exprlist(Expr* expr, ExprList* next) {
+  Expr* node = (Expr*) malloc(sizeof(Expr));
+  
+  Expr* temp;
+  temp = next;
+    
+  if(next = NULL) {
+    node->expr = expr;
+    node->next = NULL;
+    next = node;
+  }
+  else {
+    
+    while(temp->next != null) temp = temp->next;
+    node->expr = expr;
+    node->next = NULL;
+    temp->next = node;
+  }
+  return temp;
+}
+
+Expr* ast_integer(int v) {
+  Expr* node = (Expr*) malloc(sizeof(Expr));
+  node->kind = E_INTEGER;
+  node->attr.value = v;
+  return node;
+}
+
+Expr* ast_operation
+(int operator, Expr* left, Expr* right) {
+  Expr* node = (Expr*) malloc(sizeof(Expr));
+  node->kind = E_OPERATION;
+  node->attr.op.operator = operator;
+  node->attr.op.left = left;
+  node->attr.op.right = right;
+  return node;
+}
